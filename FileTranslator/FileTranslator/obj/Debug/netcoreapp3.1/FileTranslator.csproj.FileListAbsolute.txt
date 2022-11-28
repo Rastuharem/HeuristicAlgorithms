@@ -1,0 +1,14 @@
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\bin\Debug\netcoreapp3.1\FileTranslator.exe
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\bin\Debug\netcoreapp3.1\FileTranslator.deps.json
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\bin\Debug\netcoreapp3.1\FileTranslator.runtimeconfig.json
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\bin\Debug\netcoreapp3.1\FileTranslator.runtimeconfig.dev.json
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\bin\Debug\netcoreapp3.1\FileTranslator.dll
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\bin\Debug\netcoreapp3.1\FileTranslator.pdb
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\obj\Debug\netcoreapp3.1\FileTranslator.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\obj\Debug\netcoreapp3.1\FileTranslator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\obj\Debug\netcoreapp3.1\FileTranslator.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\obj\Debug\netcoreapp3.1\FileTranslator.AssemblyInfo.cs
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\obj\Debug\netcoreapp3.1\FileTranslator.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\obj\Debug\netcoreapp3.1\FileTranslator.dll
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\obj\Debug\netcoreapp3.1\FileTranslator.pdb
+C:\Users\Admin\source\repos\SingleMachineTotalWeightedTardinessProblem\FileTranslator\FileTranslator\obj\Debug\netcoreapp3.1\FileTranslator.genruntimeconfig.cache
