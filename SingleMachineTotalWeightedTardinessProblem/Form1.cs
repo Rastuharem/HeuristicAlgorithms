@@ -22,6 +22,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
         {
             printer = new PrintableByListBox(listBox1);
         }
+
         private void файлToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -43,8 +44,8 @@ namespace SingleMachineTotalWeightedTardinessProblem
                 }
                 catch (Exception ex) {
                     MessageBox.Show("Не удалось прочитать файл: " + ex.Message);
-                    listBox1.Items.Add("Неудачная попытка открыть файл...");
-                    listBox1.Items.Add("");
+                    printer.Print("Неудачная попытка открыть файл...");
+                    printer.Print("");
                     return;
                 }
                 dataGridView1.Rows.Add(Sample.Count);
@@ -57,13 +58,11 @@ namespace SingleMachineTotalWeightedTardinessProblem
                     dataGridView1.Rows[i].Cells[5].Value = '-';
                 }
                 dataGridView1.CurrentCell.Selected = false;
-                button1.Enabled = true;
-                button2.Enabled = true;
-                button3.Enabled = true;
-                button4.Enabled = true;
-                listBox1.Items.Clear();
-                listBox1.Items.Add("Файл успешно открыт...");
-                listBox1.Items.Add("");
+                SwitchButtons(true);
+
+                printer.Clear();
+                printer.Print("Файл успешно открыт...");
+                printer.Print("");
                 textBox1.Text = "";
             }
         }
@@ -72,15 +71,16 @@ namespace SingleMachineTotalWeightedTardinessProblem
             timer1.Enabled = false;
             файлToolStripMenuItem_Click(файлToolStripMenuItem, new EventArgs());
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            printer.Clear();
             var TaskSolution = new Machine(Sample, new HillClimbingMethod(Sample, printer));
             SolutionOutput(TaskSolution, dataGridView1, textBox1, listBox1);
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            printer.Clear();
             if (Sample.Count <= 10)
             {
                 var TaskSolution = new Machine(Sample, new EnumMethod(Sample, printer));
@@ -91,16 +91,57 @@ namespace SingleMachineTotalWeightedTardinessProblem
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            printer.Clear();
             var TaskSolution = new Machine(Sample, new AnnealingSimulatonMethod(Sample, printer));
             SolutionOutput(TaskSolution, dataGridView1, textBox1, listBox1);
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            IPopulationGenerator generator = new PopulationByMethod(new HillClimbingMethod(Sample, printer));
-            var TaskSolution = new Machine(Sample, new EvolutionGeneticAlgorithm(Sample, generator, printer));
+            printer.Clear();
+
+            EvolutionGeneticAlgorithm.PopulationCount = 1500;
+            EvolutionGeneticAlgorithm.NumberOfRepeats = 10;
+            EvolutionGeneticAlgorithm.NumberOfChildren = EvolutionGeneticAlgorithm.PopulationCount;
+            EvolutionGeneticAlgorithm.MutationProbability = 0.3;
+
+            var TaskSolution = new Machine(Sample, new EvolutionGeneticAlgorithm(Sample));
             SolutionOutput(TaskSolution, dataGridView1, textBox1, listBox1);
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            printer.Clear();
+
+            EvolutionGeneticAlgorithm.PopulationCount = 100;
+            EvolutionGeneticAlgorithm.NumberOfRepeats = 10;
+            EvolutionGeneticAlgorithm.NumberOfChildren = 300;
+            EvolutionGeneticAlgorithm.MutationProbability = 0.3;
+
+            IPopulationGenerator generator = new PopulationByMethod(new HillClimbingMethod(Sample));
+            var TaskSolution = new Machine(Sample, new EvolutionGeneticAlgorithm(Sample, generator));
+            SolutionOutput(TaskSolution, dataGridView1, textBox1, listBox1);
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            printer.Clear();
+
+            EvolutionGeneticAlgorithm.PopulationCount = 200;
+            EvolutionGeneticAlgorithm.NumberOfRepeats = 7;
+            EvolutionGeneticAlgorithm.NumberOfChildren = EvolutionGeneticAlgorithm.PopulationCount;
+            EvolutionGeneticAlgorithm.MutationProbability = 0.3;
+
+            IPopulationGenerator generator = new PopulationByMethod(new AnnealingSimulatonMethod(Sample));
+            var TaskSolution = new Machine(Sample, new EvolutionGeneticAlgorithm(Sample, generator));
+            SolutionOutput(TaskSolution, dataGridView1, textBox1, listBox1);
+        }
+
+        private void SwitchButtons(bool swithcer)
+        {
+            button1.Enabled = swithcer;
+            button2.Enabled = swithcer;
+            button3.Enabled = swithcer;
+            button4.Enabled = swithcer;
+            button5.Enabled = swithcer;
+            button6.Enabled = swithcer;
         }
 
         private static void SolutionOutput(Machine TaskSolution, DataGridView dataGridView1, TextBox textBox1, ListBox listBox1)

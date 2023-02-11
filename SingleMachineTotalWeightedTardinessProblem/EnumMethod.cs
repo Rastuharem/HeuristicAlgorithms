@@ -7,9 +7,16 @@ namespace SingleMachineTotalWeightedTardinessProblem
     {
         IPrinter printer;
 
-        public EnumMethod(List<Task> tasks, IPrinter printer) : base(tasks)
+        public EnumMethod(List<Task> tasks, IPrinter printer = null) : base(tasks)
         {
-            this.printer = printer;
+            if (printer == null)
+            {
+                this.printer = new PrintableByNothing();
+            }
+            else
+            {
+                this.printer = printer;
+            }
         }
 
         public override List<Task> GetSolution()

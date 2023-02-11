@@ -71,6 +71,7 @@
     <Compile Include="PopulationByMethod.cs" />
     <Compile Include="PopulationByRandom.cs" />
     <Compile Include="PrintableByListBox.cs" />
+    <Compile Include="PrintableByNothing.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SymmetryMutator.cs" />
