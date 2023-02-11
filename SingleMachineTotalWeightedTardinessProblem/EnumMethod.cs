@@ -33,7 +33,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
             return answ.CurTasks;
         }
 
-        private static List<string> ShowAllCombinations<T>(IList<T> arr, List<string> list = null, string current = "")
+        private List<string> ShowAllCombinations<T>(IList<T> arr, List<string> list = null, string current = "")
         {
             if (list == null) list = new List<string>();
             if (arr.Count == 0)
@@ -49,7 +49,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
             }
             return list;
         }
-        private static List<int> TranslateToListIntFromString(string str)
+        private List<int> TranslateToListIntFromString(string str)
         {
             List<int> CodeStr = new List<int>();
             string buf = "";

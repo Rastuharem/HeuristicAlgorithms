@@ -60,6 +60,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
                 button1.Enabled = true;
                 button2.Enabled = true;
                 button3.Enabled = true;
+                button4.Enabled = true;
                 listBox1.Items.Clear();
                 listBox1.Items.Add("Файл успешно открыт...");
                 listBox1.Items.Add("");
@@ -92,6 +93,13 @@ namespace SingleMachineTotalWeightedTardinessProblem
         {
             listBox1.Items.Clear();
             var TaskSolution = new Machine(Sample, new AnnealingSimulatonMethod(Sample, printer));
+            SolutionOutput(TaskSolution, dataGridView1, textBox1, listBox1);
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            IPopulationGenerator generator = new PopulationByMethod(new HillClimbingMethod(Sample, printer));
+            var TaskSolution = new Machine(Sample, new EvolutionGeneticAlgorithm(Sample, generator, printer));
             SolutionOutput(TaskSolution, dataGridView1, textBox1, listBox1);
         }
 

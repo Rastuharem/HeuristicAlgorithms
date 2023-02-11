@@ -15,5 +15,10 @@ namespace SingleMachineTotalWeightedTardinessProblem
         {
             box.Items.Add(text);
         }
+
+        public void Clear()
+        {
+            box.Items.Clear();
+        }
     }
 }

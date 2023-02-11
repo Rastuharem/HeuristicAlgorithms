@@ -46,6 +46,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -145,7 +146,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(728, 95);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(236, 42);
+            this.button1.Size = new System.Drawing.Size(143, 56);
             this.button1.TabIndex = 2;
             this.button1.Text = "Найти решение методом восхождения на холм";
             this.button1.UseVisualStyleBackColor = false;
@@ -156,9 +157,9 @@ namespace SingleMachineTotalWeightedTardinessProblem
             this.listBox1.BackColor = System.Drawing.Color.LightCyan;
             this.listBox1.ForeColor = System.Drawing.Color.Black;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(728, 143);
+            this.listBox1.Location = new System.Drawing.Point(728, 156);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(687, 407);
+            this.listBox1.Size = new System.Drawing.Size(687, 394);
             this.listBox1.TabIndex = 3;
             // 
             // textBox1
@@ -180,7 +181,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Location = new System.Drawing.Point(1192, 95);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(223, 42);
+            this.button2.Size = new System.Drawing.Size(223, 56);
             this.button2.TabIndex = 5;
             this.button2.Text = "Произвести полный перебор (для кол-ва задач <=10)";
             this.button2.UseVisualStyleBackColor = false;
@@ -190,13 +191,25 @@ namespace SingleMachineTotalWeightedTardinessProblem
             // 
             this.button3.BackColor = System.Drawing.Color.Pink;
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(970, 95);
+            this.button3.Location = new System.Drawing.Point(877, 95);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(216, 42);
+            this.button3.Size = new System.Drawing.Size(149, 56);
             this.button3.TabIndex = 6;
             this.button3.Text = "Найти решение методом имитации отжига";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Cornsilk;
+            this.button4.Enabled = false;
+            this.button4.Location = new System.Drawing.Point(1032, 95);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(154, 56);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Найти решение эволюционным алгоритмом";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
@@ -205,6 +218,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
             this.BackgroundImage = global::SingleMachineTotalWeightedTardinessProblem.Properties.Resources.rameses_b_faster_than_light_danyka_nadeau_music_cover_monste;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1427, 562);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
@@ -242,6 +256,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 
