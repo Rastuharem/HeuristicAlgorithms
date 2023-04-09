@@ -2,9 +2,9 @@
 {
     class Task 
     {
-        public int t { get; } // Кол-во тактов времени требуемое для выполнения задачи
-        public int d { get; } // Такт времени, к которому задача должна быть сделана (нет штрафов)
-        public int w { get; } // Величина штрафа за единицу просроченного такта времени
+        public int t { get; } // Number of time segments needed to complete task
+        public int d { get; } // Такт времени, к которому задача должна быть сделана (нет штрафов) Time segment, which after task should be done (no penalty)
+        public int w { get; } // Penalty amount for one overdue time segment
         public string name { get; }
 
         public Task(string _name, int _t, int _d, int _w) {

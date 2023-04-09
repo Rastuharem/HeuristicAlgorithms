@@ -75,7 +75,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
         private void button1_Click(object sender, EventArgs e)
         {
             printer.Clear();
-            var TaskSolution = new Machine(Sample, new HillClimbingMethod(Sample, printer));
+            var TaskSolution = new Machine(Sample, new HillClimbingMethod(Sample, new PrintableByNothing()));
             SolutionOutput(TaskSolution, dataGridView1, textBox1, listBox1);
         }
         private void button2_Click(object sender, EventArgs e)
@@ -83,7 +83,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
             printer.Clear();
             if (Sample.Count <= 10)
             {
-                var TaskSolution = new Machine(Sample, new EnumMethod(Sample, printer));
+                var TaskSolution = new Machine(Sample, new EnumMethod(Sample, new PrintableByNothing()));
                 SolutionOutput(TaskSolution, dataGridView1, textBox1, listBox1);
             }
             else
@@ -92,14 +92,14 @@ namespace SingleMachineTotalWeightedTardinessProblem
         private void button3_Click(object sender, EventArgs e)
         {
             printer.Clear();
-            var TaskSolution = new Machine(Sample, new AnnealingSimulatonMethod(Sample, printer));
+            var TaskSolution = new Machine(Sample, new AnnealingSimulatonMethod(Sample, new PrintableByNothing()));
             SolutionOutput(TaskSolution, dataGridView1, textBox1, listBox1);
         }
         private void button4_Click(object sender, EventArgs e)
         {
             printer.Clear();
 
-            EvolutionGeneticAlgorithm.PopulationCount = 1500;
+            EvolutionGeneticAlgorithm.PopulationCount = 300;
             EvolutionGeneticAlgorithm.NumberOfRepeats = 10;
             EvolutionGeneticAlgorithm.NumberOfChildren = EvolutionGeneticAlgorithm.PopulationCount;
             EvolutionGeneticAlgorithm.MutationProbability = 0.3;
@@ -125,7 +125,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
             printer.Clear();
 
             EvolutionGeneticAlgorithm.PopulationCount = 200;
-            EvolutionGeneticAlgorithm.NumberOfRepeats = 7;
+            EvolutionGeneticAlgorithm.NumberOfRepeats = 10;
             EvolutionGeneticAlgorithm.NumberOfChildren = EvolutionGeneticAlgorithm.PopulationCount;
             EvolutionGeneticAlgorithm.MutationProbability = 0.3;
 
@@ -149,6 +149,7 @@ namespace SingleMachineTotalWeightedTardinessProblem
             dataGridView1.Rows.Clear();
             dataGridView1.Rows.Add(TaskSolution.Count);
             int curt = 0;
+
             for (int i = 0; i < TaskSolution.Count; i++)
             {
                 int curw = 0;
@@ -166,8 +167,29 @@ namespace SingleMachineTotalWeightedTardinessProblem
             textBox1.Text = "Задача решена: наименьшее найденное суммарное взвешивание: " + (new Codestring(TaskSolution.Solution, Sample).Criterium);
             textBox1.Text += " Время выполнения алгоритма: " + TaskSolution.Worktime;
             listBox1.Items.Add("Время выполнения алгоритма: " + TaskSolution.Worktime);
+
+            string AverageDispersion = "";
+
+            if (TaskSolution.Count <= 10)
+            {
+                var Machine = new Machine(TaskSolution.Sample, new EnumMethod(TaskSolution.Sample, new PrintableByNothing()));
+                double accurateSol = new Codestring(Machine.Solution, Sample).Criterium;
+                double approximateSol = new Codestring(TaskSolution.Solution, Sample).Criterium;
+                AverageDispersion = CountAverageDispersion(accurateSol, approximateSol).ToString();
+                listBox1.Items.Add("Абсолютное отклонение: " + AverageDispersion + "%.");
+                listBox1.Items.Add("Точное решение: " + accurateSol);
+            }
+            else
+            {
+                AverageDispersion = "Невозможно считать относительное отклонение, т.к. кол-во задач больше 10";
+            }
             listBox1.Items.Add("Ответы выведены пользователю...");
             listBox1.Items.Add("");
+        }
+
+        private static double CountAverageDispersion(double accurateSol, double approximateSol)
+        {
+            return (approximateSol - accurateSol) / Sample.Count;
         }
     }
 }
